@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro Livro</title>
+</head>
+<body>
+    <div th:include="~{fragments/header :: cabecalho}"></div>
+    <div>
+        <form method="post" th:action="@{cadastrar}" th:object="${livro}">
+        <h2>Cadastro do livro</h2>
+        <br>
+        <div>
+            <label for="titulo">Titulo</label> <input type="text" id="titulo" th:field="*{titulo}">
+        </div>
+            <div>
+                <label for="autor">Autor</label> <input type="text" id="autor" th:field="*{autor}">
+            </div>
+
+            <div>
+                <label for="categoria">Categoria</label>
+                    <select id="categoria" th:field="*{categoria}">
+                        <option value="TERROR">Terror</option>
+                        <option value="ROMANCE">Romance</option>
+                        <option value="COMEDIA">Comédia</option>
+                        <option value="FICCAO">Ficção</option>
+                        <option value="SUSPENSE">Suspense</option>
+                        <option value="FANTASIA">Fantasia</option>
+                        <option value="BIOGRAFIA">Biografia</option>
+                        <option value="TECNOLOGIA">Tecnologia</option>
+                    </select>
+
+            </div>
+            <label for="editora">Editora</label> <input type="text" id="editora" th:field="*{editora}">
+            <div>
+                <div>
+                    <label for="preco">Preço</label> <input type="text" id="preco" th:field="*{preco}">
+                </div>
+
+                <div>
+                    <label for="isbn">ISBN</label> <input type="text" id="isbn" th:field="*{isbn}">
+                </div>
+            <div>
+                <label for="dataPublicacao">Data de Publicação</label> <input type="date" id="dataPublicacao" th:field="*{dataPublicacao}">
+            </div>
+
+            </div>
+        </form>
+    </div>
+<div th:include="~{fragments/footer :: rodape}"></div>
+</body>
+</html>

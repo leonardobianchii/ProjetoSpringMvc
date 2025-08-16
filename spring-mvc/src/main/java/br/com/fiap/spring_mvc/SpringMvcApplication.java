@@ -1,4 +1,4 @@
-package com.br.fiap.spring_mvc;
+package br.com.fiap.spring_mvc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
