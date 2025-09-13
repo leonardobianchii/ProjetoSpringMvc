@@ -2,56 +2,62 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Livros</title>
+    <title>Lista de livros </title>
     <link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet" />
     <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" defer></script>
     <link th:href="@{/css/style.css}" rel="stylesheet" />
     <script th:src="@{/js/script.js}" defer></script>
 </head>
 <body>
-    <div th:insert="~{fragments/header :: cabecalho}"></div>
+    <div th:insert="~{fragments/header :: cabecalho}">
+
+    </div>
     <div class="main_content">
-        <h2>Lista de Livros</h2>
+        <h2>Lista de livros</h2>
         <br>
         <table>
             <thead>
                 <tr>
-                    <th>ID </th>
-                    <th>Título </th>
-                    <th>Ações </th>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbod>
                 <tr th:each="livro: ${listaLivros}">
-                    <td th:text="${livro.id}"> </td>
-                    <td th:text="${livro.titulo}"> </td>
+                    <td th:text="${livro.id}"></td>
+                    <td th:text="${livro.titulo}"></td>
                     <td>
                         <button th:attr="onclick=|showModal('infoModal' + ${livro.id})|">
-                            Ver
+                             ver
                         </button>
                     </td>
                 </tr>
-            </tbody>
+            </tbod>
         </table>
         <div th:each="livro: ${listaLivros}"
              th:attr="id=${'infoModal' + livro.id}"
              style="display: none">
             <p>
-                ID: <span th:text="${livro.id}"></span><br>
-                Titulo: <span th:text="${livro.titulo}"></span><br>
-                Autor: <span th:text="${livro.autor}"></span><br>
-                Categoria: <span th:text="${livro.categoria.descricao}"></span><br>
-                Editora: <span th:text="${livro.editora}"></span><br>
-                Preco: <span th:text="${livro.preco}"></span><br>
-                ISBN: <span th:text="${livro.isbn}"></span><br>
-                Data de Publicação: <span th:text="${#temporals.format(livro.dataPublicacao, 'dd/MM/yyyy')}"></span><br>
-                Editar | Deletar
+                iD: <span th:text="${livro.id}"></span><br/>
+                Titulo: <span th:text="${livro.titulo}"></span><br/>
+                Autor: <span th:text="${livro.autor}"></span><br/>
+                Categoria: <span th:text="${livro.categoria.descricao}"></span><br/>
+                Editora: <span th:text="${livro.editora}"></span><br/>
+                Preco: <span th:text="${livro.preco}"></span><br/>
+                Isbn: <span th:text="${livro.isbn}"></span><br/>
+                Data de publicação:<span th:text="${#temporals.format(livro.dataPublicacao, 'dd/MM/yyyy')}"></span><br/>
+
+                <a th:href="@{/livros/cadastro/{id}(id=${livro.id})}">Editar</a> DELETAR
             </p>
             <button th:attr="onclick=|hideModal('infoModal' + ${livro.id})|">
                 Fechar
             </button>
         </div>
     </div>
-    <div th:insert="~{fragments/footer :: rodape}"></div>
+    <div th:include="~{fragments/footer :: rodape}">
+
+    </div>
+
 </body>
 </html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Livro</title>
+  <link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet" />
+  <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" defer></script>
+  <link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<div th:include="~{fragments/header :: cabecalho}"></div>
+<div class="main_content">
+  <form method="post" th:action="@{/livros/cadastrar}" th:object="${livro}">
+    <h2>Cadastro de Livro</h2>
+    <input type="hidden" th:field="id"/>
+    <div>
+      <label for="titulo">Titulo:</label><input type="text" id="titulo" th:field="*{titulo}">
+      <p th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}" th:errorclass="error"></p>
+    </div>
+    <div>
+      <label for="autor">Autor:</label><input type="text" id="autor" th:field="*{autor}">
+      <p th:if="${#fields.hasErrors('autor')}" th:errors="*{autor}" th:errorclass="error"></p>
+    </div>
+    <div>
+      <label for="categoria">Categoria:</label>
+      <select id="categoria" th:field="*{categoria}">
+        <option value="TERROR">Terror</option>
+        <option value="ROMANCE">Romance</option>
+        <option value="COMEDIA">Comédia</option>
+        <option value="FICCAO">Ficção</option>
+        <option value="SUSPENSE">Suspense</option>
+        <option value="FANTASIA">Fantasia</option>
+        <option value="BIOGRAFIA">Biografia</option>
+        <option value="TECNOLOGIA">Tecnologia</option>
+      </select>
+      <p th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}" th:errorclass="error"></p>
+    </div>
+    <div>
+      <label for="editora">Editoria:</label><input type="text" id="editora" th:field="*{editora}">
+      <p th:if="${#fields.hasErrors('editora')}" th:errors="*{editora}" th:errorclass="error"></p>
+    </div>
+    <div>
+      <label for="preco">Preço:</label><input type="text" id="preco" th:field="*{preco}">
+      <p th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}" th:errorclass="error"></p>
+    </div>
+    <div>
+      <label for="isbn">Isbn:</label><input type="text" id="isbn" th:field="*{isbn}">
+      <p th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}" th:errorclass="error"></p>
+    </div>
+    <div>
+      <label for="dataPublicacao">Data da publicação:</label><input type="date" id="dataPublicacao" th:field="*{dataPublicacao}">
+      <p th:if="${#fields.hasErrors('dataPublicacao')}" th:errors="*{dataPublicacao}" th:errorclass="error"></p>
+    </div>
+    <div>
+      <button type="submit">Salvar</button>
+    </div>
+  </form>
+</div>
+<div th:include="~{fragments/header :: cabecalho}"></div>
+</body>
+</html>
